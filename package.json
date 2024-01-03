@@ -3,18 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npx env-cmd -x -f ./.env.local next dev -p '$PORT'",
+    "start": "npx env-cmd -x -f ./.env.local next start -p '$PORT'",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+		"dev-https": "yarn local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 5000 --target 3000"
   },
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.4"
+    "next": "14.0.4",
+    "iron-session": "^8.0.1",
+    "local-ssl-proxy": "^2.0.5"
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.0.4"
+    "eslint-config-next": "14.0.4",
+    "local-ssl-proxy": "^2.0.5",
+    "env-cmd": "^10.1.0"
   }
 }
